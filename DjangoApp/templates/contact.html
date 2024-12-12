@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Contact Us</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Get in Touch</h2>
+      <p>If you have any questions or need more information, feel free to reach out to us!</p>
+      <form action="submit_form.php" method="POST">
+        <div>
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="email">Email Address:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="message">Your Message:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </section>
+    <section>
+      <h2>Contact Details</h2>
+      <ul>
+        <li>Email: info@example.com</li>
+        <li>Phone: +123 456 7890</li>
+        <li>Address: 123 Main Street, City, Country</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Your Website. All rights reserved.</p>
+  </footer>
+</body>
+</html>

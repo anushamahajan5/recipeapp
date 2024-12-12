@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>{{ page }}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e8e6e7;
+            color: #17181a;
+            margin-top: 20px;
+        }
+
+        .navbar {
+            background-color: #007bff; /* Blue background for navbar */
+            padding: 1rem 2rem;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        .navbar .btn {
+            font-size: 1rem;
+            padding: 0.5rem 1.2rem;
+            margin-left: 1rem;
+        }
+
+        .navbar .btn-outline-danger {
+            border-color: #dc3545; /* Red border for logout */
+            color: #dc3545;
+        }
+
+        .navbar .btn-outline-primary {
+            border-color: #007bff; /* Blue border for login */
+            color: #007bff;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        th, td {
+            border: 1px solid #dd9bcf;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #b9bab9;
+            font-weight: bold;
+        }
+
+        td img {
+            max-height: 120px;
+            object-fit: cover;
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .footer p {
+            margin-bottom: 0;
+            color: #6c757d;
+        }
+
+        .btn-custom {
+            padding: 0.6rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+        <a href="/" class="navbar-brand">Recipe App</a>
+        <div class="ml-auto">
+            <form class="form-inline">
+                {% if request.user.is_authenticated %}
+                <a href="/logout/" class="btn btn-outline-danger btn-custom" type="submit">Logout</a>
+                {% else %}
+                <a href="/login/" class="btn btn-outline-primary btn-custom" type="submit">Login</a>
+                {% endif %}
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% block start %}
+        <!-- Content will be injected here -->
+        {% endblock %}
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Recipe App. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRyjcEurYIgCzTBb/NeksmhybF5PptP9L8A9fyA59" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+2Pb3r1f1yb4yJqk8e+L4U+F9hb7x7ZKzjOJgEboiPnmPmj9D3dbxj6gD" crossorigin="anonymous"></script>
+    <script>
+        console.log("Hey Django");
+    </script>
+</body>
+</html>
+

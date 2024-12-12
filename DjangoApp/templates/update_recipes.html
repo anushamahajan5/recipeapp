@@ -1,0 +1,29 @@
+{% extends "base.html" %} 
+{% block start %}
+
+<div class="container mt-5">
+    <form class="col-lg-6 mx-auto card p-4 shadow-lg rounded-lg" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="text-center text-primary mb-4">Update Recipe</h2>
+        
+        <div class="mb-4">
+            <label for="recipe_name" class="form-label">Recipe Name</label>
+            <input name="recipe_name" value="{{ recipe.recipe_name }}" required type="text" class="form-control form-control-lg">
+            <small id="emailHelp" class="form-text text-muted">Make it unique.</small>
+        </div>
+
+        <div class="mb-4">
+            <label for="recipe_description" class="form-label">Recipe Description</label>
+            <textarea name="recipe_description" required class="form-control form-control-lg" rows="4">{{ recipe.recipe_description }}</textarea>
+        </div>
+
+        <div class="mb-4">
+            <label for="recipe_image" class="form-label">Recipe Image</label>
+            <input name="recipe_image" type="file" class="form-control form-control-lg" style="height: auto;">
+        </div>
+
+        <button type="submit" class="btn btn-success btn-lg w-100">Update</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block start %}
+  <div class="container mt-5">
+    <!-- Display User -->
+    <h3 class="text-center text-primary">Welcome, {{ request.user }}</h3>
+
+    <!-- Add Recipe Form -->
+    <form class="col-md-6 mx-auto card p-4 shadow-lg rounded" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="mb-4 text-center">Add a New Recipe</h2>
+
+        <!-- Recipe Name Input -->
+        <div class="mb-3">
+            <label for="recipe_name" class="form-label font-weight-bold">Recipe Name</label>
+            <input id="recipe_name" name="recipe_name" type="text" class="form-control" required>
+            <small class="form-text text-muted">Make it unique and descriptive.</small>
+        </div>
+
+        <!-- Recipe Description Input -->
+        <div class="mb-3">
+            <label for="recipe_description" class="form-label font-weight-bold">Recipe Description</label>
+            <textarea id="recipe_description" name="recipe_description" class="form-control" rows="4" required></textarea>
+        </div>
+
+        <!-- Recipe Image Input -->
+        <div class="mb-3">
+            <label for="recipe_image" class="form-label font-weight-bold">Recipe Image</label>
+            <input id="recipe_image" name="recipe_image" type="file" class="form-control" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-success w-100 rounded-pill py-2">Add Recipe</button>
+    </form>
+
+    <!-- Search Form -->
+    <div class="mt-5">
+        <div class="mx-auto col-md-6">
+            <form>
+                <div class="mb-3">
+                    <label for="search" class="form-label font-weight-bold">Search for Food</label>
+                    <input id="search" name="search" type="text" class="form-control" placeholder="Search for a recipe">
+                </div>
+                <button type="submit" class="btn btn-primary w-100 rounded-pill py-2">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Recipes Table -->
+    <div class="mt-5">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Recipe Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for recipe in recipes %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ recipe.recipe_name }}</td>
+                    <td>{{ recipe.recipe_description }}</td>
+                    <td>
+                        <img src="/media/{{ recipe.recipe_image }}" class="img-fluid rounded" style="max-height: 150px;">
+                    </td>
+                    <td>
+                        <a href="/delete-recipe/{{ recipe.id }}/" class="btn btn-danger m-2 rounded-pill">Delete</a>
+                        <a href="/update-recipe/{{ recipe.id }}/" class="btn btn-warning m-2 rounded-pill">Update</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  </div>
+{% endblock %}
+
+
